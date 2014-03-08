@@ -129,6 +129,10 @@
     <None Include="Codecamp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1_Anim_Cubic.png" />
+    <Content Include="Assets\2_Anim_Cubic.png" />
+    <Content Include="Assets\3_Anim_Cubic.png" />
+    <Content Include="Assets\4_Anim_Cubic.png" />
     <Content Include="Assets\b1.png" />
     <Content Include="Assets\b2.png" />
     <Content Include="Assets\b3.png" />
