@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
@@ -23,6 +24,9 @@ namespace Codecamp
     /// </summary>
     public sealed partial class GameRules : Page
     {
+        DispatcherTimer t = new DispatcherTimer();
+        int a = 0;
+
         public int p, pc, ca;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -51,6 +55,21 @@ namespace Codecamp
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+            t.Interval = TimeSpan.FromMilliseconds(300);
+            t.Tick += t_Tick;
+            t.Start();
+        }
+
+        void t_Tick(object sender, object e)
+        {
+            switch (a % 4)
+            {
+                case 0: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/1_Anim_Cubic.png", UriKind.Absolute)); break;
+                case 1: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/2_Anim_Cubic.png", UriKind.Absolute)); break;
+                case 2: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/3_Anim_Cubic.png", UriKind.Absolute)); break;
+                case 3: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/4_Anim_Cubic.png", UriKind.Absolute)); break;
+            }
+            ++a;
         }
 
         /// <summary>
@@ -125,6 +144,7 @@ namespace Codecamp
             {
                 this.Frame.Navigate(typeof(GamePage));
             }
+            t.Stop();
         }
 
         private void Black_Tapped(object sender, TappedRoutedEventArgs e)
@@ -147,5 +167,7 @@ namespace Codecamp
         {
             pc = 4;
         }
+
+               
     }
 }
