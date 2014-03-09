@@ -26,8 +26,8 @@ namespace Codecamp
     public sealed partial class GamePage : Page
     {
         public Image pl1fig, pl2fig, pl3fig, pl4fig, cubic;
-        public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt;
-        public int[] stepsx,stepsy;
+        public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt,pr;
+        public int[] stepsx,stepsy,price;
         DispatcherTimer t = new DispatcherTimer();
 
         public GamePage()
@@ -35,8 +35,10 @@ namespace Codecamp
             this.InitializeComponent();
             //fldcnt = 34;
             fldcnt = 21;
+            pr = 33;
             stepsx = new int[fldcnt];
             stepsy = new int[fldcnt];
+            price = new int[33];
             stepsx[0] = 10;
             stepsy[0] = 10;
             stepsx[1] = 100;
@@ -79,6 +81,49 @@ namespace Codecamp
             stepsy[19] = 600;
             stepsx[20] = 1300;
             stepsy[20] = 700;
+
+
+
+
+
+
+            price[0] = -1;
+            price[1] = 300;
+            price[2] = -2;
+            price[3] = 400;
+            price[4] = 500;
+            price[5] = -3;
+            price[6] = 600;
+            price[7] = 700;
+            price[8] = 800;
+            price[9] = -4;
+            price[10] = 1000;
+            price[11] = -2;
+            price[12] = 1100;
+            price[13] = 1200;
+            price[14] = -3;
+            price[15] = 1300;
+            price[16] = 1400;
+            price[17] = -5;
+            price[18] = 1600;
+            price[19] = -2;
+            price[20] = 1700;
+            price[21] = 1800;
+            price[22] = 1900;
+            price[23] = -3;
+            price[24] = 2000;
+            price[25] = 2100;
+            price[26] = -6;
+            price[27] = 2300;
+            price[28] = -2;
+            price[29] = 2400;
+            price[30] = 2500;
+            price[31] = -3;
+            price[32] = 2600;
+            price[33] = 2700;
+
+
+
 
             pl1pos = pl2pos = pl3pos = pl4pos = 0;
             curmove = 1;
@@ -123,7 +168,7 @@ namespace Codecamp
             MainPanel.Children.Add(pl2fig);
 
 
-            /*
+            
             if (Codecamp.GameRules.p > 2)
             {
                 pl3fig = new Image();
@@ -137,7 +182,7 @@ namespace Codecamp
                 MainPanel.Children.Add(pl3fig);
             }
 
-            if (p > 3)
+            if (Codecamp.GameRules.p > 3)
             {
                 pl4fig = new Image();
                 pl4fig.Width = 40;
@@ -149,7 +194,7 @@ namespace Codecamp
                 pl4fig.VerticalAlignment = VerticalAlignment.Top;
                 MainPanel.Children.Add(pl4fig);
             }
-             */
+             
         }
 
         private void Roll(object sender, RoutedEventArgs e)
