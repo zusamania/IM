@@ -33,8 +33,8 @@ namespace Codecamp
         public GamePage()
         {
             this.InitializeComponent();
-            //fldcnt = 34;
-            fldcnt = 21;
+            fldcnt = 34;
+            
             pr = 33;
 
             income = new int[34];
