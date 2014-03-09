@@ -22,14 +22,12 @@ namespace Codecamp
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    /// 
- 
+
     public partial class GameRules : Page
     {
         DispatcherTimer t = new DispatcherTimer();
         int a = 0;
 
-       
 
         public static int p, pc, ca;
         private NavigationHelper navigationHelper;
@@ -150,7 +148,7 @@ namespace Codecamp
             {
                 this.Frame.Navigate(typeof(GamePage));
             }
-            t.Stop();
+            
         }
 
         private void Black_Tapped(object sender, TappedRoutedEventArgs e)
