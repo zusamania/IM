@@ -26,17 +26,26 @@ namespace Codecamp
     public sealed partial class GamePage : Page
     {
         public Image pl1fig, pl2fig, pl3fig, pl4fig, cubic;
+
         public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt, pl1score, pl2score, pl3score, pl4score;
         public int[] stepsx,stepsy;
+
+        public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt,pr;
+        public int[] stepsx,stepsy,price;
 
         DispatcherTimer t = new DispatcherTimer();
 
         public GamePage()
         {
             this.InitializeComponent();
+
             fldcnt = 35;
+            //fldcnt = 34;
+            fldcnt = 21;
+            pr = 33;
             stepsx = new int[fldcnt];
             stepsy = new int[fldcnt];
+            price = new int[33];
             stepsx[0] = 10;
             stepsy[0] = 10;
             stepsx[1] = 100;
@@ -105,8 +114,50 @@ namespace Codecamp
             stepsy[32] = 700;
             stepsx[33] = 100;
             stepsy[33] = 700;
-            stepsx[34] = 10;
-            stepsy[34] = 700;
+
+
+
+
+
+
+
+            price[0] = -1;
+            price[1] = 300;
+            price[2] = -2;
+            price[3] = 400;
+            price[4] = 500;
+            price[5] = -3;
+            price[6] = 600;
+            price[7] = 700;
+            price[8] = 800;
+            price[9] = -4;
+            price[10] = 1000;
+            price[11] = -2;
+            price[12] = 1100;
+            price[13] = 1200;
+            price[14] = -3;
+            price[15] = 1300;
+            price[16] = 1400;
+            price[17] = -5;
+            price[18] = 1600;
+            price[19] = -2;
+            price[20] = 1700;
+            price[21] = 1800;
+            price[22] = 1900;
+            price[23] = -3;
+            price[24] = 2000;
+            price[25] = 2100;
+            price[26] = -6;
+            price[27] = 2300;
+            price[28] = -2;
+            price[29] = 2400;
+            price[30] = 2500;
+            price[31] = -3;
+            price[32] = 2600;
+            price[33] = 2700;
+
+
+
 
             pl1pos = pl2pos = pl3pos = pl4pos = 0;
             pl1score = pl2score = pl3score = pl4score = Codecamp.GameRules.ca;
@@ -175,7 +226,6 @@ namespace Codecamp
             MainPanel.Children.Add(pl2fig);
 
 
-           
             if (Codecamp.GameRules.p > 2)
             {
                 pl3fig = new Image();
@@ -215,7 +265,7 @@ namespace Codecamp
                 pl4fig.VerticalAlignment = VerticalAlignment.Top;
                 MainPanel.Children.Add(pl4fig);
             }
-            
+
         }
 
         private void Roll(object sender, RoutedEventArgs e)

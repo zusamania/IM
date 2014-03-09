@@ -18,14 +18,16 @@ using Windows.UI.Xaml.Navigation;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace Codecamp
-{
+{ 
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
+
     public partial class GameRules : Page
     {
         DispatcherTimer t = new DispatcherTimer();
         int a = 0;
+
 
         public static int p, pc, ca;
         private NavigationHelper navigationHelper;
