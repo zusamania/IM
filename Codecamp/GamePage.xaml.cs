@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,20 +25,18 @@ namespace Codecamp
     /// </summary>
     public sealed partial class GamePage : Page
     {
-        public Image figure, figure2, figure3, figure4;
-        public Image cubic;
-        //public Array steps = (1..30);
-        public int[] stepsx;
-        public int[] stepsy;
-        public int pl1pos;
-        public int pl2pos;
-        public int pl3pos;
-        public int pl4pos;
+        public Image pl1fig, pl2fig, pl3fig, pl4fig, cubic;
+        public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt;
+        public int[] stepsx,stepsy;
+        DispatcherTimer t = new DispatcherTimer();
+
         public GamePage()
         {
             this.InitializeComponent();
-            stepsx = new int[30];
-            stepsy = new int[30];
+            //fldcnt = 34;
+            fldcnt = 21;
+            stepsx = new int[fldcnt];
+            stepsy = new int[fldcnt];
             stepsx[0] = 10;
             stepsy[0] = 10;
             stepsx[1] = 100;
@@ -52,8 +51,38 @@ namespace Codecamp
             stepsy[5] = 10;
             stepsx[6] = 600;
             stepsy[6] = 10;
+            stepsx[7] = 700;
+            stepsy[7] = 10;
+            stepsx[8] = 800;
+            stepsy[8] = 10;
+            stepsx[9] = 900;
+            stepsy[9] = 10;
+            stepsx[10] = 1000;
+            stepsy[10] = 10;
+            stepsx[11] = 1100;
+            stepsy[11] = 10;
+            stepsx[12] = 1200;
+            stepsy[12] = 10;
+            stepsx[13] = 1300;
+            stepsy[13] = 10;
+            stepsx[14] = 1300;
+            stepsy[14] = 100;
+            stepsx[15] = 1300;
+            stepsy[15] = 200;
+            stepsx[16] = 1300;
+            stepsy[16] = 300;
+            stepsx[17] = 1300;
+            stepsy[17] = 400;
+            stepsx[18] = 1300;
+            stepsy[18] = 500;
+            stepsx[19] = 1300;
+            stepsy[19] = 600;
+            stepsx[20] = 1300;
+            stepsy[20] = 700;
 
-            pl1pos = 0;
+            pl1pos = pl2pos = pl3pos = pl4pos = 0;
+            curmove = 1;
+
            /* Canvas Mycan = new Canvas();
 	        Mycan.Width = 400;
 	        Mycan.Height = 400;
@@ -73,55 +102,61 @@ namespace Codecamp
             //player pl = new player(1,10000);
             //public int p, pc, ca;
 
-            figure = new Image();
-            figure.Width = 40;
-            figure.Height = 40;
-            figure.Source = new BitmapImage(new Uri("ms-appx:///Assets/bl1.png", UriKind.Absolute));
-            figure.Margin = new Thickness(10, 10, 0, 0);
-            figure.Name = "pl_black";
-            figure.HorizontalAlignment = HorizontalAlignment.Left;
-            figure.VerticalAlignment = VerticalAlignment.Top;
-            MainPanel.Children.Add(figure);
+            pl1fig = new Image();
+            pl1fig.Width = 40;
+            pl1fig.Height = 40;
+            pl1fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/bl1.png", UriKind.Absolute));
+            pl1fig.Margin = new Thickness(10, 10, 0, 0);
+            pl1fig.Name = "pl_black";
+            pl1fig.HorizontalAlignment = HorizontalAlignment.Left;
+            pl1fig.VerticalAlignment = VerticalAlignment.Top;
+            MainPanel.Children.Add(pl1fig);
 
-            figure2 = new Image();
-            figure2.Width = 40;
-            figure2.Height = 40;
-            figure2.Source = new BitmapImage(new Uri("ms-appx:///Assets/b1.png", UriKind.Absolute));
-            figure2.Margin = new Thickness(10, 60, 0, 0);
-            figure2.Name = "pl_black";
-            figure2.HorizontalAlignment = HorizontalAlignment.Left;
-            figure2.VerticalAlignment = VerticalAlignment.Top;
-            MainPanel.Children.Add(figure2);
-
-            figure3 = new Image();
-            figure3.Width = 40;
-            figure3.Height = 40;
-            figure3.Source = new BitmapImage(new Uri("ms-appx:///Assets/g1.png", UriKind.Absolute));
-            figure3.Margin = new Thickness(60, 10, 0, 0);
-            figure3.Name = "pl_black";
-            figure3.HorizontalAlignment = HorizontalAlignment.Left;
-            figure3.VerticalAlignment = VerticalAlignment.Top;
-            MainPanel.Children.Add(figure3);
-
-            figure4 = new Image();
-            figure4.Width = 40;
-            figure4.Height = 40;
-            figure4.Source = new BitmapImage(new Uri("ms-appx:///Assets/r1.png", UriKind.Absolute));
-            figure4.Margin = new Thickness(60, 60, 0, 0);
-            figure4.Name = "pl_black";
-            figure4.HorizontalAlignment = HorizontalAlignment.Left;
-            figure4.VerticalAlignment = VerticalAlignment.Top;
-            MainPanel.Children.Add(figure4);
+            pl2fig = new Image();
+            pl2fig.Width = 40;
+            pl2fig.Height = 40;
+            pl2fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/b1.png", UriKind.Absolute));
+            pl2fig.Margin = new Thickness(10, 60, 0, 0);
+            pl2fig.Name = "pl_black";
+            pl2fig.HorizontalAlignment = HorizontalAlignment.Left;
+            pl2fig.VerticalAlignment = VerticalAlignment.Top;
+            MainPanel.Children.Add(pl2fig);
 
 
+            /*
+            if (Codecamp.GameRules.p > 2)
+            {
+                pl3fig = new Image();
+                pl3fig.Width = 40;
+                pl3fig.Height = 40;
+                pl3fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/g1.png", UriKind.Absolute));
+                pl3fig.Margin = new Thickness(60, 10, 0, 0);
+                pl3fig.Name = "pl_black";
+                pl3fig.HorizontalAlignment = HorizontalAlignment.Left;
+                pl3fig.VerticalAlignment = VerticalAlignment.Top;
+                MainPanel.Children.Add(pl3fig);
+            }
+
+            if (p > 3)
+            {
+                pl4fig = new Image();
+                pl4fig.Width = 40;
+                pl4fig.Height = 40;
+                pl4fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/r1.png", UriKind.Absolute));
+                pl4fig.Margin = new Thickness(60, 60, 0, 0);
+                pl4fig.Name = "pl_black";
+                pl4fig.HorizontalAlignment = HorizontalAlignment.Left;
+                pl4fig.VerticalAlignment = VerticalAlignment.Top;
+                MainPanel.Children.Add(pl4fig);
+            }
+             */
         }
 
         private void Roll(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
             int step = rnd.Next(1, 7);
-            greetingOutput.Text = " " + step;
-            //figure4.Margin = new Thickness(60, 60+30, 0, 0);
+            
             
             if (cubic == null)
             {
@@ -140,7 +175,36 @@ namespace Codecamp
                 cubic.Source = new BitmapImage(new Uri("ms-appx:///Assets/" + step + "Cubic.png", UriKind.Absolute));
             }
 
-            figure.Margin = new Thickness(stepsx[step], stepsy[step], 0, 0);
+            if (curmove == 1)
+            {
+                pl1pos = pl1pos + step;
+                greetingOutput.Text = " " + pl1pos;
+                if (pl1pos > fldcnt-2) pl1pos = pl1pos - fldcnt + 1;
+                pl1fig.Margin = new Thickness(stepsx[pl1pos], stepsy[pl1pos], 0, 0);
+            } 
+            else if (curmove == 2)
+            {
+                pl2pos = pl2pos + step;
+                greetingOutput.Text = " " + pl2pos;
+                if (pl2pos > fldcnt - 2) pl2pos = pl2pos - fldcnt + 1;
+                pl2fig.Margin = new Thickness(stepsx[pl2pos], stepsy[pl2pos], 0, 0);
+            }
+            else if (curmove == 3)
+            {
+                pl3pos = pl3pos + step;
+                greetingOutput.Text = " " + pl3pos;
+                if (pl3pos > fldcnt - 2) pl3pos = pl3pos - fldcnt + 1;
+                pl3fig.Margin = new Thickness(stepsx[pl3pos], stepsy[pl3pos], 0, 0);
+            } 
+            else
+            {
+                pl4pos = pl4pos + step;
+                greetingOutput.Text = " " + pl4pos;
+                if (pl4pos > fldcnt - 2) pl4pos = pl4pos - fldcnt + 1;
+                pl4fig.Margin = new Thickness(stepsx[pl4pos], stepsy[pl4pos], 0, 0);
+            }
+            curmove++;
+            if (curmove > 2) curmove = 1;
         }
 
         public void buyField()

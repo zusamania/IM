@@ -64,10 +64,10 @@ namespace Codecamp
         {
             switch (a % 4)
             {
-                case 0: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/1_Anim_Cubic.png", UriKind.Absolute)); break;
-                case 1: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/2_Anim_Cubic.png", UriKind.Absolute)); break;
-                case 2: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/3_Anim_Cubic.png", UriKind.Absolute)); break;
-                case 3: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/4_Anim_Cubic.png", UriKind.Absolute)); break;
+                case 0: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/1Cubic.png", UriKind.Absolute)); break;
+                case 1: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/2Cubic.png", UriKind.Absolute)); break;
+                case 2: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/3Cubic.png", UriKind.Absolute)); break;
+                case 3: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/4Cubic.png", UriKind.Absolute)); break;
             }
             ++a;
         }
