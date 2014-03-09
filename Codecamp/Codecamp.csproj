@@ -142,7 +142,9 @@
     <Content Include="Assets\bl2.png" />
     <Content Include="Assets\bl3.png" />
     <Content Include="Assets\Black.png" />
+    <Content Include="Assets\Black_ok.png" />
     <Content Include="Assets\Blue.png" />
+    <Content Include="Assets\Blue_ok.png" />
     <Content Include="Assets\Button_Done.png" />
     <Content Include="Assets\Button_Play.png" />
     <Content Include="Assets\Frame.scale-100.png" />
@@ -154,11 +156,13 @@
     <Content Include="Assets\g2.png" />
     <Content Include="Assets\g3.png" />
     <Content Include="Assets\Green.png" />
+    <Content Include="Assets\Green_ok.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\r1.png" />
     <Content Include="Assets\r2.png" />
     <Content Include="Assets\r3.png" />
     <Content Include="Assets\Red.png" />
+    <Content Include="Assets\Red_ok.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />

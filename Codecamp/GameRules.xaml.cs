@@ -152,22 +152,37 @@ namespace Codecamp
         private void Black_Tapped(object sender, TappedRoutedEventArgs e)
         {
             pc = 1;
-           // Black.RenderTransform = new Windows.UI.Xaml.Media.ScaleTransform() { ScaleX = 1.3f };
+            Black.Source = new BitmapImage(new Uri("ms-appx:///Assets/Black_ok.png", UriKind.Absolute));
+            Red.Source = new BitmapImage(new Uri("ms-appx:///Assets/Red.png", UriKind.Absolute));
+            Blue.Source = new BitmapImage(new Uri("ms-appx:///Assets/Blue.png", UriKind.Absolute));
+            Green.Source = new BitmapImage(new Uri("ms-appx:///Assets/Green.png", UriKind.Absolute));
         }
 
         private void Red_Tapped(object sender, TappedRoutedEventArgs e)
         {
             pc = 2;
+            Black.Source = new BitmapImage(new Uri("ms-appx:///Assets/Black.png", UriKind.Absolute));
+            Red.Source = new BitmapImage(new Uri("ms-appx:///Assets/Red_ok.png", UriKind.Absolute));
+            Blue.Source = new BitmapImage(new Uri("ms-appx:///Assets/Blue.png", UriKind.Absolute));
+            Green.Source = new BitmapImage(new Uri("ms-appx:///Assets/Green.png", UriKind.Absolute));
         }
 
         private void Green_Tapped(object sender, TappedRoutedEventArgs e)
         {
             pc = 3;
+            Black.Source = new BitmapImage(new Uri("ms-appx:///Assets/Black.png", UriKind.Absolute));
+            Red.Source = new BitmapImage(new Uri("ms-appx:///Assets/Red.png", UriKind.Absolute));
+            Blue.Source = new BitmapImage(new Uri("ms-appx:///Assets/Blue.png", UriKind.Absolute));
+            Green.Source = new BitmapImage(new Uri("ms-appx:///Assets/Green_ok.png", UriKind.Absolute));
         }
 
         private void Blue_Tapped(object sender, TappedRoutedEventArgs e)
         {
             pc = 4;
+            Black.Source = new BitmapImage(new Uri("ms-appx:///Assets/Black.png", UriKind.Absolute));
+            Red.Source = new BitmapImage(new Uri("ms-appx:///Assets/Red.png", UriKind.Absolute));
+            Blue.Source = new BitmapImage(new Uri("ms-appx:///Assets/Blue_ok.png", UriKind.Absolute));
+            Green.Source = new BitmapImage(new Uri("ms-appx:///Assets/Green.png", UriKind.Absolute));
         }
 
                

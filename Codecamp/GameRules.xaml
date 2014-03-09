@@ -58,7 +58,7 @@
         <TextBox x:Name="Cash_amo" HorizontalAlignment="Left" Height="50" Margin="1046,64,0,0" Grid.Row="1" TextWrapping="Wrap" Text="10000" VerticalAlignment="Top" Width="234" FontSize="28"/>
         <Image x:Name="Done" HorizontalAlignment="Left" Height="110" Margin="490,488,0,0" Grid.Row="1" VerticalAlignment="Top" Width="432" Stretch="Fill" Source="Assets/Button_Done.png" Tapped="Image_Tapped"/>
         <TextBlock HorizontalAlignment="Left" Height="44" Margin="546,176,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Choose player's color" VerticalAlignment="Top" Width="452" FontSize="32"/>
-        <Image x:Name="Black" HorizontalAlignment="Left" Height="186" Margin="138,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Source="Assets/Black.png" Stretch="Fill" Tapped="Black_Tapped" RenderTransformOrigin="0.5,0.5"/>
+        <Image x:Name="Black" HorizontalAlignment="Left" Height="186" Margin="123,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Source="Assets/Black.png" Stretch="Fill" Tapped="Black_Tapped" RenderTransformOrigin="0.5,0.5"/>
         <Image x:Name="Red" HorizontalAlignment="Left" Height="186" Margin="420,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Source="Assets/Red.png" Stretch="Fill" Tapped="Red_Tapped"/>
         <Image x:Name="Green" HorizontalAlignment="Left" Height="186" Margin="722,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Source="Assets/Green.png" Stretch="Fill" Tapped="Green_Tapped"/>
         <Image x:Name="Blue" HorizontalAlignment="Left" Height="186" Margin="1012,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Source="Assets/Blue.png" Stretch="Fill" Tapped="Blue_Tapped"/>
