@@ -27,8 +27,8 @@ namespace Codecamp
     {
         public Image pl1fig, pl2fig, pl3fig, pl4fig, cubic;
 
-        public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt, pl1score, pl2score, pl3score, pl4score, pr;
-        public int[] stepsx, stepsy, price, income;
+        public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt, pl1score, pl2score, pl3score, pl4score, pr, pca1, pca2, pca3, pca4, p1id, p2id, p3id, p4id;
+        public int[] stepsx, stepsy, price, income, cbuy;
         int tmp1;
         //DispatcherTimer t = new DispatcherTimer();
 
@@ -36,13 +36,18 @@ namespace Codecamp
         {
             this.InitializeComponent();
             //t.Interval = TimeSpan.FromMilliseconds(300);
+            
             fldcnt = 34;
-            pr = 33;
+            pca1 = Codecamp.GameRules.ca;
+            pca2 = Codecamp.GameRules.ca;
+            pca3 = Codecamp.GameRules.ca;
+            pca4 = Codecamp.GameRules.ca;
             //2348, 1390
             income = new int[34];
             stepsx = new int[fldcnt];
             stepsy = new int[fldcnt];
             price = new int[34];
+            cbuy = new int[34];
             stepsx[0] = 2348;
             stepsy[0] = 1390;
             stepsx[1] = 2094;
@@ -64,14 +69,22 @@ namespace Codecamp
             stepsx[9] = 122;
             stepsy[9] = 1400;
 
-
             tmp1 = 13;
+            stepsx[10] = 1000;
 
             stepsx[10] = 30;
             stepsy[10] = 1208;
             stepsx[11] = 30;
             stepsy[11] = 1056;
             stepsx[12] = 30;
+
+            stepsy[10] = 10;
+            stepsx[11] = 1100;
+            stepsy[11] = 10;
+            stepsx[12] = 1200;
+            stepsy[12] = 10;
+            stepsx[13] = 1300;
+
             stepsy[12] = 800;
             stepsx[13] = 30;
             stepsy[13] = 10;
@@ -193,26 +206,62 @@ namespace Codecamp
             income[32] = 520;
             income[33] = 540;
 
+
+            cbuy[0] = -1;
+            cbuy[1] = 0;
+            cbuy[2] = -1;
+            cbuy[3] = 0;
+            cbuy[4] = 0;
+            cbuy[5] = -1;
+            cbuy[6] = 0;
+            cbuy[7] = 0;
+            cbuy[8] = 0;
+            cbuy[9] = -1;
+            cbuy[10] = 0;
+            cbuy[11] = -1;
+            cbuy[12] = 0;
+            cbuy[13] = 0;
+            cbuy[14] = -1;
+            cbuy[15] = 0;
+            cbuy[16] = 0;
+            cbuy[17] = -1;
+            cbuy[18] = 0;
+            cbuy[19] = -1;
+            cbuy[22] = 0;
+            cbuy[23] = -1;
+            cbuy[24] = 0;
+            cbuy[25] = 0;
+            cbuy[26] = -1;
+            cbuy[27] = 0;
+            cbuy[28] = -1;
+            cbuy[29] = 0;
+            cbuy[30] = 0;
+            cbuy[31] = -1;
+            cbuy[32] = 0;
+            cbuy[33] = 0;
+
+
+
             pl1pos = pl2pos = pl3pos = pl4pos = 0;
             pl1score = pl2score = pl3score = pl4score = Codecamp.GameRules.ca;
             curmove = 1;
             greetingOutput.Text = " " + pl1score;
 
-           /* Canvas Mycan = new Canvas();
-	        Mycan.Width = 400;
-	        Mycan.Height = 400;
-            SolidColorBrush myBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
-            Mycan.Background = myBrush;
-            Mycan.Margin = new Thickness(0, 0, 1000, 1000);
-            MainPanel.Children.Add(Mycan);
+            /* Canvas Mycan = new Canvas();
+             Mycan.Width = 400;
+             Mycan.Height = 400;
+             SolidColorBrush myBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
+             Mycan.Background = myBrush;
+             Mycan.Margin = new Thickness(0, 0, 1000, 1000);
+             MainPanel.Children.Add(Mycan);
 
-            Canvas Mycan2 = new Canvas();
-            Mycan2.Width = 400;
-            Mycan2.Height = 400;
-            SolidColorBrush myBrush2 = new SolidColorBrush(Windows.UI.Colors.Red);
-            Mycan2.Background = myBrush2;
-            Mycan2.Margin = new Thickness(100, 100, 1000, 1000);
-            MainPanel.Children.Add(Mycan2); */
+             Canvas Mycan2 = new Canvas();
+             Mycan2.Width = 400;
+             Mycan2.Height = 400;
+             SolidColorBrush myBrush2 = new SolidColorBrush(Windows.UI.Colors.Red);
+             Mycan2.Background = myBrush2;
+             Mycan2.Margin = new Thickness(100, 100, 1000, 1000);
+             MainPanel.Children.Add(Mycan2); */
 
             //player pl = new player(1,10000);
             //public int p, pc, ca;
@@ -246,7 +295,7 @@ namespace Codecamp
             pl2fig = new Image();
             pl2fig.Width = 40;
             pl2fig.Height = 40;
-            if (Codecamp.GameRules.pc==1)
+            if (Codecamp.GameRules.pc == 1)
             {
                 pl2fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/bl1.png", UriKind.Absolute));
             }
@@ -307,8 +356,8 @@ namespace Codecamp
         {
             Random rnd = new Random();
             int step = rnd.Next(1, 7);
-            
-            
+
+
             if (cubic == null)
             {
                 cubic = new Image();
@@ -332,19 +381,147 @@ namespace Codecamp
 
             if (curmove == 1)
             {
+                pl1pos = pl1pos + step;
+                if (pl1pos > fldcnt - 2)
+                {
+                    pca1 = pca1 + 1000;
+                    pl1pos = pl1pos - fldcnt + 1;
+                }
+                pl1fig.Margin = new Thickness(stepsx[pl1pos], stepsy[pl1pos], 0, 0);
                 movePlayer(step, pl1pos, pl1fig);
-            } 
+                p1id = 1;
+                //company buy
+                if ((pl1pos == price[pl1pos]) && (cbuy[pl1pos] == 0) && (cbuy[pl1pos] != -1) && (pca1 > price[pl1pos]))
+                {
+
+                    Card_info.Source = new BitmapImage(new Uri("ms-appx:///Assets/NUM/" + Convert.ToString(price[pl1pos]) + ".png", UriKind.Absolute));
+                    Buy_mess.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                }
+                //pay
+                if(((pl1pos == cbuy[pl1pos]) && (cbuy[pl1pos] > 0) && (cbuy[pl1pos]!=1) && (pca1 > income[pl1pos]))){
+                    if(cbuy[pl1pos]==2){
+                        pca1=pca1-income[pl1pos];
+                        pca2=pca2+income[pl1pos];
+                    }
+                    else if(cbuy[pl1pos]==3){
+                        pca1=pca1-income[pl1pos];
+                        pca3=pca3+income[pl1pos];
+                    }
+                    else if(cbuy[pl1pos]==4){
+                        pca1=pca1-income[pl1pos];
+                        pca4=pca4+income[pl1pos];
+                    }
+                }
+            }
             else if (curmove == 2)
             {
+                pl2pos = pl2pos + step;
+                if (pl2pos > fldcnt - 2)
+                {
+                    pca2 = pca2 + 1000;
+                    pl2pos = pl2pos - fldcnt + 1;
+                }
+                pl2fig.Margin = new Thickness(stepsx[pl2pos], stepsy[pl2pos], 0, 0);
                 movePlayer(step, pl2pos, pl2fig);
+                p2id = 2;
+                //company buy
+                if ((pl2pos == price[pl2pos]) && (cbuy[pl2pos] == 0) && (cbuy[pl2pos] != -1) && (pca2 > price[pl2pos]))
+                {
+                    cbuy[pl2pos] = 2;
+                    pca2 = pca2 - price[pl2pos];
+
+                }
+                //pay
+                 if(((pl2pos == cbuy[pl2pos]) && (cbuy[pl2pos] > 0) && (cbuy[pl2pos]!=2) && (pca2 > income[pl2pos]))){
+                    if(cbuy[pl2pos]==1){
+                        pca2=pca2-income[pl2pos];
+                        pca1=pca1+income[pl2pos];
+                    }
+                    else if(cbuy[pl2pos]==3){
+                        pca2=pca2-income[pl2pos];
+                        pca3=pca3+income[pl2pos];
+                    }
+                    else if(cbuy[pl2pos]==4){
+                        pca2=pca2-income[pl2pos];
+                        pca4=pca4+income[pl2pos];
+                    }
+                }
             }
             else if (curmove == 3)
             {
+                pl3pos = pl3pos + step;
+                if (pl3pos > fldcnt - 2)
+                {
+                    pca3 = pca3 + 1000;
+                    pl3pos = pl3pos - fldcnt + 1;
                 movePlayer(step, pl3pos, pl3fig);
-            } 
+                }
+                pl3fig.Margin = new Thickness(stepsx[pl3pos], stepsy[pl3pos], 0, 0);
+                p3id = 3;
+                //company buy
+                if ((pl3pos == price[pl3pos]) && (cbuy[pl3pos] == 0) && (cbuy[pl3pos] != -1) && (pca3 > price[pl3pos]))
+                {
+                    cbuy[pl3pos] = 3;
+                    pca3 = pca3 - price[pl3pos];
+
+                }
+                //pay
+                if (((pl3pos == cbuy[pl3pos]) && (cbuy[pl3pos] > 0) && (cbuy[pl3pos] != 3) && (pca3 > income[pl3pos])))
+                {
+                    if (cbuy[pl3pos] == 1)
+                    {
+                        pca3 = pca3 - income[pl3pos];
+                        pca1 = pca1 + income[pl3pos];
+                    }
+                    else if (cbuy[pl3pos] == 2)
+                    {
+                        pca3 = pca3 - income[pl3pos];
+                        pca2 = pca2 + income[pl3pos];
+                    }
+                    else if (cbuy[pl3pos] == 4)
+                    {
+                        pca3 = pca3 - income[pl3pos];
+                        pca4 = pca4 + income[pl3pos];
+                    }
+                }
+            }
             else
             {
+                pl4pos = pl4pos + step;
+                if (pl4pos > fldcnt - 2)
+                {
+                    pca4 = pca4 + 1000;
+                    pl4pos = pl4pos - fldcnt + 1;
+                }
+                pl4fig.Margin = new Thickness(stepsx[pl4pos], stepsy[pl4pos], 0, 0);
                 movePlayer(step, pl4pos, pl4fig);
+                p4id = 4;
+                //company buy
+                if ((pl4pos == price[pl4pos]) && (cbuy[pl4pos] == 0) && (cbuy[pl4pos] != -1) && (pca4 > price[pl4pos]))
+                {
+                    cbuy[pl4pos] = 4;
+                    pca4 = pca4 - price[pl4pos];
+
+                }
+                //pay
+                if (((pl4pos == cbuy[pl4pos]) && (cbuy[pl4pos] > 0) && (cbuy[pl4pos] != 4) && (pca4 > income[pl4pos])))
+                {
+                    if (cbuy[pl4pos] == 1)
+                    {
+                        pca4 = pca4 - income[pl4pos];
+                        pca1 = pca1 + income[pl4pos];
+                    }
+                    else if (cbuy[pl4pos] == 3)
+                    {
+                        pca4 = pca4 - income[pl4pos];
+                        pca3 = pca3 + income[pl4pos];
+                    }
+                    else if (cbuy[pl4pos] == 2)
+                    {
+                        pca4 = pca4 - income[pl4pos];
+                        pca2 = pca2 + income[pl4pos];
+                    }
+                }
             }
             curmove++;
             if (curmove > Codecamp.GameRules.p) curmove = 1;
@@ -384,7 +561,23 @@ namespace Codecamp
 
         public void buyField()
         {
+            
+        }
 
+        private void buy_but_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if ((pl1pos == price[pl1pos]) && (cbuy[pl1pos] == 0) && (cbuy[pl1pos] != -1) && (pca1 > price[pl1pos]))
+            {
+                cbuy[pl1pos] = 1;
+                pca1 = pca1 - price[pl1pos];
+                Buy_mess.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+            }
+        }
+
+        private void cancel_but_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Buy_mess.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
     }
 }

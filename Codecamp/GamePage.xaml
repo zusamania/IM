@@ -7,11 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Name="MainPanel" Width="2500" Height="1536" Margin="0,-766,0,0">
+    <Grid x:Name="MainPanel" Width="2500" Height="1536" Margin="0">
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="Assets/Game_Board.png"/>
         </Grid.Background>
         <TextBlock Name="greetingOutput" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="97" Width="106" Margin="391,107,0,0" FontSize="16"/>
         <Button x:Name="rollBtn" Content="Roll" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Roll" Margin="0,1227,0,0" RenderTransformOrigin="0.54,0.562"/>
+        <Grid x:Name="Buy_mess" HorizontalAlignment="Left" Height="604" Margin="476,144,0,0" VerticalAlignment="Top" Width="652" Visibility="Collapsed">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1D1D9E" Offset="0"/>
+                    <GradientStop Color="#FF1D1D1D" Offset="0.426"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock HorizontalAlignment="Left" Height="62" Margin="34,10,0,0" TextWrapping="Wrap" Text="Wish to Buy?" VerticalAlignment="Top" Width="298" FontSize="40"/>
+            <Image x:Name="Card_info" HorizontalAlignment="Left" Height="584" Margin="272,10,0,0" VerticalAlignment="Top" Width="370"/>
+            <Image x:Name="buy_but" HorizontalAlignment="Left" Height="84" Margin="10,154,0,0" VerticalAlignment="Top" Width="257" Stretch="Fill" Source="Assets/Button_Buy.png" Tapped="buy_but_Tapped"/>
+            <Image x:Name="cancel_but" HorizontalAlignment="Left" Height="84" Margin="8,304,0,0" VerticalAlignment="Top" Width="257" Stretch="Fill" Source="Assets/Button_Cancel.png" Tapped="cancel_but_Tapped"/>
+        </Grid>
     </Grid>
 </Page>

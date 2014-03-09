@@ -156,6 +156,7 @@ namespace Codecamp
                 this.Frame.Navigate(typeof(GamePage));
             }
             t.Stop();
+            
         }
 
         private void Black_Tapped(object sender, TappedRoutedEventArgs e)
