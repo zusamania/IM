@@ -147,9 +147,7 @@
     <Content Include="Assets\Blue_ok.png" />
     <Content Include="Assets\Button_Done.png" />
     <Content Include="Assets\Button_Play.png" />
-    <Content Include="Assets\Frame.scale-100.png" />
-    <Content Include="Assets\Frame.scale-140.png" />
-    <Content Include="Assets\Frame.scale-180.png" />
+    <Content Include="Assets\Frame.png" />
     <Content Include="Assets\Frame2.png" />
     <Content Include="Assets\Frame3.png" />
     <Content Include="Assets\g1.png" />

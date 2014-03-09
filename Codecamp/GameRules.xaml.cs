@@ -22,12 +22,12 @@ namespace Codecamp
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class GameRules : Page
+    public partial class GameRules : Page
     {
         DispatcherTimer t = new DispatcherTimer();
         int a = 0;
 
-        public int p, pc, ca;
+        public static int p, pc, ca;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
