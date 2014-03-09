@@ -55,19 +55,21 @@ namespace Codecamp
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
-            t.Interval = TimeSpan.FromMilliseconds(300);
+            t.Interval = TimeSpan.FromMilliseconds(200);
             t.Tick += t_Tick;
             t.Start();
         }
 
         void t_Tick(object sender, object e)
         {
-            switch (a % 4)
+            switch (a % 6)
             {
-                case 0: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/1_Anim_Cubic.png", UriKind.Absolute)); break;
-                case 1: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/2_Anim_Cubic.png", UriKind.Absolute)); break;
-                case 2: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/3_Anim_Cubic.png", UriKind.Absolute)); break;
-                case 3: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/4_Anim_Cubic.png", UriKind.Absolute)); break;
+                case 0: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/1Cubic.png", UriKind.Absolute)); break;
+                case 1: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/2Cubic.png", UriKind.Absolute)); break;
+                case 2: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/3Cubic.png", UriKind.Absolute)); break;
+                case 3: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/4Cubic.png", UriKind.Absolute)); break;
+                case 4: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/5Cubic.png", UriKind.Absolute)); break;
+                case 5: cube_anim.Source = new BitmapImage(new Uri("ms-appx:///Assets/6Cubic.png", UriKind.Absolute)); break;
             }
             ++a;
         }

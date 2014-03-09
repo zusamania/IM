@@ -129,10 +129,12 @@
     <None Include="Codecamp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\1_Anim_Cubic.png" />
-    <Content Include="Assets\2_Anim_Cubic.png" />
-    <Content Include="Assets\3_Anim_Cubic.png" />
-    <Content Include="Assets\4_Anim_Cubic.png" />
+    <Content Include="Assets\1Cubic.png" />
+    <Content Include="Assets\2Cubic.png" />
+    <Content Include="Assets\3Cubic.png" />
+    <Content Include="Assets\4Cubic.png" />
+    <Content Include="Assets\5Cubic.png" />
+    <Content Include="Assets\6Cubic.png" />
     <Content Include="Assets\b1.png" />
     <Content Include="Assets\b2.png" />
     <Content Include="Assets\b3.png" />
@@ -143,6 +145,11 @@
     <Content Include="Assets\Blue.png" />
     <Content Include="Assets\Button_Done.png" />
     <Content Include="Assets\Button_Play.png" />
+    <Content Include="Assets\Frame.scale-100.png" />
+    <Content Include="Assets\Frame.scale-140.png" />
+    <Content Include="Assets\Frame.scale-180.png" />
+    <Content Include="Assets\Frame2.png" />
+    <Content Include="Assets\Frame3.png" />
     <Content Include="Assets\g1.png" />
     <Content Include="Assets\g2.png" />
     <Content Include="Assets\g3.png" />
