@@ -153,6 +153,7 @@
     <Content Include="Assets\g1.png" />
     <Content Include="Assets\g2.png" />
     <Content Include="Assets\g3.png" />
+    <Content Include="Assets\Game_Board.png" />
     <Content Include="Assets\Green.png" />
     <Content Include="Assets\Green_ok.png" />
     <Content Include="Assets\Logo.scale-100.png" />

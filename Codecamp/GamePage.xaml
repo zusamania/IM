@@ -7,8 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Name="MainPanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="2732" Height="1536" Margin="0">
+    <Grid Name="MainPanel" Width="2500" Height="1536" Margin="0,-766,0,0">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/Game_Board.png"/>
+        </Grid.Background>
         <TextBlock Name="greetingOutput" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="97" Width="106" Margin="391,107,0,0" FontSize="16"/>
-        <Button Content="Roll" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Roll" Margin="784,104,0,0" RenderTransformOrigin="0.54,0.562"/>
+        <Button x:Name="rollBtn" Content="Roll" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Roll" Margin="0,1227,0,0" RenderTransformOrigin="0.54,0.562"/>
     </Grid>
 </Page>
