@@ -27,7 +27,7 @@ namespace Codecamp
     {
         public Image pl1fig, pl2fig, pl3fig, pl4fig, cubic;
         public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt,pr;
-        public int[] stepsx,stepsy,price;
+        public int[] stepsx,stepsy,price,income;
         DispatcherTimer t = new DispatcherTimer();
 
         public GamePage()
@@ -36,9 +36,11 @@ namespace Codecamp
             //fldcnt = 34;
             fldcnt = 21;
             pr = 33;
+
+            income = new int[34];
             stepsx = new int[fldcnt];
             stepsy = new int[fldcnt];
-            price = new int[33];
+            price = new int[34];
             stepsx[0] = 10;
             stepsy[0] = 10;
             stepsx[1] = 100;
@@ -123,7 +125,40 @@ namespace Codecamp
             price[33] = 2700;
 
 
-
+            income[0] = 0;
+            income[1] = 60;
+            income[2] = 0;
+            income[3] = 80;
+            income[4] = 100;
+            income[5] = 0;
+            income[6] = 120;
+            income[7] = 140;
+            income[8] = 160;
+            income[9] = 0;
+            income[10] = 200;
+            income[11] = 0;
+            income[12] = 220;
+            income[13] = 240;
+            income[14] = 0;
+            income[15] = 260;
+            income[16] = 280;
+            income[17] = 0;
+            income[18] = 300;
+            income[19] = 0;
+            income[20] = 340;
+            income[21] = 360;
+            income[22] = 380;
+            income[23] = 0;
+            income[24] = 400;
+            income[25] = 420;
+            income[26] = 0;
+            income[27] = 460;
+            income[28] = 0;
+            income[29] = 480;
+            income[30] = 500;
+            income[31] = 0;
+            income[32] = 520;
+            income[33] = 540;
 
             pl1pos = pl2pos = pl3pos = pl4pos = 0;
             curmove = 1;
