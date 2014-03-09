@@ -54,6 +54,13 @@ namespace Codecamp
         public GameRules()
         {
             this.InitializeComponent();
+
+            pc = 1;
+            Black.Source = new BitmapImage(new Uri("ms-appx:///Assets/Black_ok.png", UriKind.Absolute));
+            Red.Source = new BitmapImage(new Uri("ms-appx:///Assets/Red.png", UriKind.Absolute));
+            Blue.Source = new BitmapImage(new Uri("ms-appx:///Assets/Blue.png", UriKind.Absolute));
+            Green.Source = new BitmapImage(new Uri("ms-appx:///Assets/Green.png", UriKind.Absolute));
+
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
@@ -148,6 +155,7 @@ namespace Codecamp
             {
                 this.Frame.Navigate(typeof(GamePage));
             }
+            t.Stop();
             
         }
 

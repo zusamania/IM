@@ -29,56 +29,68 @@ namespace Codecamp
 
         public int pl1pos, pl2pos, pl3pos, pl4pos, curmove, fldcnt, pl1score, pl2score, pl3score, pl4score, pr, pca1, pca2, pca3, pca4, p1id, p2id, p3id, p4id;
         public int[] stepsx, stepsy, price, income, cbuy;
-
-        DispatcherTimer t = new DispatcherTimer();
+        int tmp1;
+        //DispatcherTimer t = new DispatcherTimer();
 
         public GamePage()
         {
             this.InitializeComponent();
-            t.Stop();
+            //t.Interval = TimeSpan.FromMilliseconds(300);
+            
             fldcnt = 34;
             pca1 = Codecamp.GameRules.ca;
             pca2 = Codecamp.GameRules.ca;
             pca3 = Codecamp.GameRules.ca;
             pca4 = Codecamp.GameRules.ca;
-
+            //2348, 1390
             income = new int[34];
             stepsx = new int[fldcnt];
             stepsy = new int[fldcnt];
             price = new int[34];
             cbuy = new int[34];
+            stepsx[0] = 2348;
+            stepsy[0] = 1390;
+            stepsx[1] = 2094;
+            stepsy[1] = 1472;
+            stepsx[2] = 1854;
+            stepsy[2] = 1472;
+            stepsx[3] = 1614;
+            stepsy[3] = 1472;
+            stepsx[4] = 1364;
+            stepsy[4] = 1472;
+            stepsx[5] = 1112;
+            stepsy[5] = 1472;
+            stepsx[6] = 874;
+            stepsy[6] = 1472;
+            stepsx[7] = 624;
+            stepsy[7] = 1472;
+            stepsx[8] = 368;
+            stepsy[8] = 1472;
+            stepsx[9] = 122;
+            stepsy[9] = 1400;
 
-            stepsx[0] = 10;
-            stepsy[0] = 10;
-            stepsx[1] = 100;
-            stepsy[1] = 10;
-            stepsx[2] = 200;
-            stepsy[2] = 10;
-            stepsx[3] = 300;
-            stepsy[3] = 10;
-            stepsx[4] = 400;
-            stepsy[4] = 10;
-            stepsx[5] = 500;
-            stepsy[5] = 10;
-            stepsx[6] = 600;
-            stepsy[6] = 10;
-            stepsx[7] = 700;
-            stepsy[7] = 10;
-            stepsx[8] = 800;
-            stepsy[8] = 10;
-            stepsx[9] = 900;
-            stepsy[9] = 10;
+            tmp1 = 13;
             stepsx[10] = 1000;
+
+            stepsx[10] = 30;
+            stepsy[10] = 1208;
+            stepsx[11] = 30;
+            stepsy[11] = 1056;
+            stepsx[12] = 30;
+
             stepsy[10] = 10;
             stepsx[11] = 1100;
             stepsy[11] = 10;
             stepsx[12] = 1200;
             stepsy[12] = 10;
             stepsx[13] = 1300;
+
+            stepsy[12] = 800;
+            stepsx[13] = 30;
             stepsy[13] = 10;
-            stepsx[14] = 1300;
+            stepsx[14] = 30;
             stepsy[14] = 100;
-            stepsx[15] = 1300;
+            stepsx[15] = 30;
             stepsy[15] = 200;
             stepsx[16] = 1300;
             stepsy[16] = 300;
@@ -273,7 +285,8 @@ namespace Codecamp
             {
                 pl1fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/bl1.png", UriKind.Absolute));
             }
-            pl1fig.Margin = new Thickness(10, 10, 0, 0);
+            //pl1fig.Margin = new Thickness(stepsx[0]-50, stepsy[0]-50, 0, 0);
+            pl1fig.Margin = new Thickness(stepsx[tmp1], stepsy[tmp1], 0, 0);
             pl1fig.Name = "pl_black";
             pl1fig.HorizontalAlignment = HorizontalAlignment.Left;
             pl1fig.VerticalAlignment = VerticalAlignment.Top;
@@ -290,7 +303,7 @@ namespace Codecamp
             {
                 pl2fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/b1.png", UriKind.Absolute));
             }
-            pl2fig.Margin = new Thickness(10, 60, 0, 0);
+            pl2fig.Margin = new Thickness(stepsx[0]+50, stepsy[0]+50, 0, 0);
             pl2fig.Name = "pl_black";
             pl2fig.HorizontalAlignment = HorizontalAlignment.Left;
             pl2fig.VerticalAlignment = VerticalAlignment.Top;
@@ -310,7 +323,7 @@ namespace Codecamp
                 {
                     pl3fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/g1.png", UriKind.Absolute));
                 }
-                pl3fig.Margin = new Thickness(60, 10, 0, 0);
+                pl3fig.Margin = new Thickness(stepsx[0]+50, stepsy[0]-50, 0, 0);
                 pl3fig.Name = "pl_black";
                 pl3fig.HorizontalAlignment = HorizontalAlignment.Left;
                 pl3fig.VerticalAlignment = VerticalAlignment.Top;
@@ -330,7 +343,7 @@ namespace Codecamp
                 {
                     pl4fig.Source = new BitmapImage(new Uri("ms-appx:///Assets/r1.png", UriKind.Absolute));
                 }
-                pl4fig.Margin = new Thickness(60, 60, 0, 0);
+                pl4fig.Margin = new Thickness(stepsx[0]-50, stepsy[0]+50, 0, 0);
                 pl4fig.Name = "pl_black";
                 pl4fig.HorizontalAlignment = HorizontalAlignment.Left;
                 pl4fig.VerticalAlignment = VerticalAlignment.Top;
@@ -351,7 +364,7 @@ namespace Codecamp
                 cubic.Width = 60;
                 cubic.Height = 60;
                 cubic.Source = new BitmapImage(new Uri("ms-appx:///Assets/" + step + "Cubic.png", UriKind.Absolute));
-                cubic.Margin = new Thickness(300, 300, 0, 0);
+                cubic.Margin = new Thickness(2200, 1200, 0, 0);
                 cubic.Name = "cubic";
                 cubic.HorizontalAlignment = HorizontalAlignment.Left;
                 cubic.VerticalAlignment = VerticalAlignment.Top;
@@ -362,6 +375,10 @@ namespace Codecamp
                 cubic.Source = new BitmapImage(new Uri("ms-appx:///Assets/" + step + "Cubic.png", UriKind.Absolute));
             }
 
+
+            
+  
+
             if (curmove == 1)
             {
                 pl1pos = pl1pos + step;
@@ -371,6 +388,7 @@ namespace Codecamp
                     pl1pos = pl1pos - fldcnt + 1;
                 }
                 pl1fig.Margin = new Thickness(stepsx[pl1pos], stepsy[pl1pos], 0, 0);
+                movePlayer(step, pl1pos, pl1fig);
                 p1id = 1;
                 //company buy
                 if ((pl1pos == price[pl1pos]) && (cbuy[pl1pos] == 0) && (cbuy[pl1pos] != -1) && (pca1 > price[pl1pos]))
@@ -404,6 +422,7 @@ namespace Codecamp
                     pl2pos = pl2pos - fldcnt + 1;
                 }
                 pl2fig.Margin = new Thickness(stepsx[pl2pos], stepsy[pl2pos], 0, 0);
+                movePlayer(step, pl2pos, pl2fig);
                 p2id = 2;
                 //company buy
                 if ((pl2pos == price[pl2pos]) && (cbuy[pl2pos] == 0) && (cbuy[pl2pos] != -1) && (pca2 > price[pl2pos]))
@@ -435,6 +454,7 @@ namespace Codecamp
                 {
                     pca3 = pca3 + 1000;
                     pl3pos = pl3pos - fldcnt + 1;
+                movePlayer(step, pl3pos, pl3fig);
                 }
                 pl3fig.Margin = new Thickness(stepsx[pl3pos], stepsy[pl3pos], 0, 0);
                 p3id = 3;
@@ -474,6 +494,7 @@ namespace Codecamp
                     pl4pos = pl4pos - fldcnt + 1;
                 }
                 pl4fig.Margin = new Thickness(stepsx[pl4pos], stepsy[pl4pos], 0, 0);
+                movePlayer(step, pl4pos, pl4fig);
                 p4id = 4;
                 //company buy
                 if ((pl4pos == price[pl4pos]) && (cbuy[pl4pos] == 0) && (cbuy[pl4pos] != -1) && (pca4 > price[pl4pos]))
@@ -505,6 +526,38 @@ namespace Codecamp
             curmove++;
             if (curmove > Codecamp.GameRules.p) curmove = 1;
         }
+
+        public void movePlayer(int step, int plpos, Image plfig)
+        {        
+            plpos = plpos + step;
+            if (plpos > fldcnt - 2) plpos = plpos - fldcnt + 1;
+            plfig.Margin = new Thickness(stepsx[plpos], stepsy[plpos], 0, 0);
+
+            if (plpos >= 0 & plpos<4)
+            {
+                MainPanel.Margin = new Thickness(-1130, -766, 0, 0);
+                rollBtn.Margin = new Thickness(1822, 1227, 0, 0);
+                cubic.Margin = new Thickness(1822, 1100, 0, 0);
+            }
+            else if (plpos >= 4 & plpos<8)
+            {
+                MainPanel.Margin = new Thickness(-500, -766, 0, 0);
+                rollBtn.Margin = new Thickness(1400, 1227, 0, 0);
+                cubic.Margin = new Thickness(1400, 1100, 0, 0);
+            }
+            else if (plpos >= 8 & plpos < 12)
+            {
+                MainPanel.Margin = new Thickness(0, -766, 0, 0);
+                rollBtn.Margin = new Thickness(500, 1227, 0, 0);
+                cubic.Margin = new Thickness(500, 1100, 0, 0);
+            }
+            else if (plpos >= 0 & plpos < 4)
+            {
+
+            }
+
+        }
+        
 
         public void buyField()
         {
